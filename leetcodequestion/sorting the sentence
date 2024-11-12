@@ -1,0 +1,25 @@
+class Solution {
+    public String sortSentence(String s) {
+         HashMap<Integer,String> map=new HashMap<>();
+        int key;
+        StringBuilder sb=new StringBuilder();
+        for(int i=0;i<s.length();){
+            StringBuilder word=new StringBuilder();
+            while (i < s.length()&&!Character.isDigit(s.charAt(i))){
+                word.append(s.charAt(i));
+                i++;
+            }
+            key=Character.getNumericValue(s.charAt(i));
+            i++;
+            map.put(key,word.toString().trim());
+        }
+        sb=new StringBuilder();
+        for (int j = 1; j <= map.size(); j++) {
+             sb.append(map.get(j)); 
+        if (j < map.size()) {   
+              sb.append(" ");
+            }
+    }
+        return sb.toString().trim();
+    }
+}
